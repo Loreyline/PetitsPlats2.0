@@ -143,14 +143,13 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     gap: 2%;
 }
 
 article {
     width: 25%;
     margin: auto;
-    height: 35rem;
+    height: 70rem;
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
@@ -158,16 +157,28 @@ article {
     border-radius: 25px;
 }
 
+article h3 {
+    padding: 2%;
+    font-weight: bold;
+}
+
 .enteteRecette {
+    height: 25rem;
+}
+
+.enteteRecette img {
     width: 100%;
     object-fit: cover;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    height: 25rem;
 }
 
 .enteteRecette h5 {
     position: relative;
     width: 20%;
     background-color: #FFD15A;
-    top: 0;
+    top: -25rem;
     left: 75%;
     border-radius: 10px;
     height: 2cqmax;
@@ -178,4 +189,11 @@ article {
 
 section {
     padding: 2%;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50%;
 }

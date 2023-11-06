@@ -18,24 +18,23 @@ function recettesTemplate(data) {
         const divIngredients = document.createElement('div');
         const ingredients = document.createElement('h4');
 
-        // for (let i = 0; i < ingredients.length; i++) {
+        for (let i = 0; i < data.ingredients.length; i++) {
 
-        //     const divIngredient = document.createElement('div');
-        //     const nameIngredient = document.createElement('h4');
-        //     const quantite = document.createElement('p');
+            const divIngredient = document.createElement('div');
+            const nameIngredient = document.createElement('h4');
+            const quantite = document.createElement('p');
 
-        //     nameIngredient.setAttribute("class", "nomIngredient");
-        //     quantite.setAttribute("class", "quantiteIngredient");
-        //     divIngredient.setAttribute("class", "ingredientRecette");
+            nameIngredient.setAttribute("class", "nomIngredient");
+            quantite.setAttribute("class", "quantiteIngredient");
+            divIngredient.setAttribute("class", "ingredientRecette");
 
-        //     nameIngredient.textContent = ingredient;
-        //     quantite.textContent = quantity + unit;
+            nameIngredient.textContent = ingredient;
+            quantite.textContent = quantity + unit;
 
-        //     divIngredient.appendChild(nameIngredient);
-        //     divIngredient.appendChild(quantite);
-
-        //     divIngredients.appendChild(divIngredient);
-        // };
+            divIngredient.appendChild(nameIngredient);
+            divIngredient.appendChild(quantite);
+            divIngredients.appendChild(divIngredient);
+        };
 
 
         //insertion des attributs des éléments
