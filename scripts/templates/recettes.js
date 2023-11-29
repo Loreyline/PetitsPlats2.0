@@ -18,7 +18,9 @@ function recettesTemplate(data) {
         const divIngredients = document.createElement('div');
         const ingredients = document.createElement('h4');
 
-        for (let i = 0; i < data.ingredients.length; i++) {
+        const tableauIngredients = [];
+        data.ingredients.forEach(Element => {
+            tableauIngredients.push(Element)
 
             const divIngredient = document.createElement('div');
             const nameIngredient = document.createElement('h4');
@@ -28,14 +30,21 @@ function recettesTemplate(data) {
             quantite.setAttribute("class", "quantiteIngredient");
             divIngredient.setAttribute("class", "ingredientRecette");
 
-            nameIngredient.textContent = ingredient;
-            quantite.textContent = quantity + unit;
+            nameIngredient.textContent = Element.ingredient;
+            if (Element.quantity != null && Element.unit != null) {
+                quantite.textContent = Element.quantity + Element.unit;
+
+            } else if (Element.quantity != null && Element.unit == null) {
+                quantite.textContent = Element.quantity;
+            } else {
+                quantite.textContent = "";
+            }
 
             divIngredient.appendChild(nameIngredient);
             divIngredient.appendChild(quantite);
             divIngredients.appendChild(divIngredient);
-        };
 
+        });
 
         //insertion des attributs des éléments
         img.setAttribute("src", illustration);
@@ -66,7 +75,6 @@ function recettesTemplate(data) {
         sectionRecette.appendChild(paragraphe);
         sectionIngredients.appendChild(ingredients);
         sectionIngredients.appendChild(divIngredients);
-
 
         return (article);
     }

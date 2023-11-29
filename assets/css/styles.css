@@ -105,6 +105,7 @@ main {
     width: 100%;
     justify-content: space-between;
     border-radius: 10px;
+    flex-wrap: wrap;
 }
 
 .buttonListDown,
@@ -120,6 +121,8 @@ main {
 .formSelect {
     border: 1px solid #ededed;
     display: none;
+    height: 3rem;
+    margin: auto;
 }
 
 .formSelect input,
@@ -149,7 +152,7 @@ main {
 article {
     width: 25%;
     margin: auto;
-    height: 70rem;
+    height: 62rem;
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
@@ -160,6 +163,9 @@ article {
 article h3 {
     padding: 2%;
     font-weight: bold;
+    font-size: 30px;
+    font-family: 'Anton', sans-serif;
+    margin-bottom: 0;
 }
 
 .enteteRecette {
@@ -188,12 +194,41 @@ article h3 {
 }
 
 section {
-    padding: 2%;
+    padding: 0 5%;
+}
+
+.titreSection {
+    text-transform: uppercase;
+    margin: 1rem 0;
+}
+
+.description {
+    text-align: justify;
 }
 
 .ingredients {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 50%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+.ingredientRecette {
+    height: 4rem;
+    width: 42%;
+}
+
+.ingredientRecette p {
+    color: darkgray;
+    margin-top: 0;
+}
+
+.ingredientRecette h4 {
+    margin-bottom: 0;
+}
+
+.liste {
+    display: none;
 }
