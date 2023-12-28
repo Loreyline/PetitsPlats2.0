@@ -186,12 +186,60 @@ function displayListes(recettes) {
         }
     });
 }
+// function entreeIngredient() {
+//     let inputIngredient = document.querySelector("#texteIngredients");
+//     inputIngredient.addEventListener('input', function () {
+//         return inputIngredient.value;
+//     });
+// }
 
+// function entreeAppareil() {
+//     let inputAppareil = document.querySelector("#texteAppareils");
+//     inputAppareil.addEventListener('input', function () {
+//         return inputAppareil.value;
+//     });
+// }
+
+// function entreeUstensil() {
+//     let inputUtensil = document.querySelector("#texteUstensile");
+//     inputUtensil.addEventListener('input', function () {
+//         return inputUtensil.value;
+//     });
+// }
+
+// function choixRecettes(recettes, ingredient, appareil, ustensil) {
+
+//     let tabfiltre = [];
+//     const tableauRecette = [];
+//     recettes.recipes.forEach((recipe) => { tableauRecette.push(recipe) });
+
+//     for (let i = 0; i < tableauRecette.length; i++) {
+//         tableauRecette[i].ingredients.forEach((element) => {
+//             if (ingredient === element) {
+//                 tabfiltre.push(tableauRecette[i]);
+//             }
+//         });
+//         if (appareil === tableauRecette[i].appliance) {
+//             console.log(appareil);
+//             tabfiltre.push(tableauRecette[i]);
+//         }
+//         tableauRecette[i].ustensils.forEach((element) => {
+//             if (ustensil === element) {
+//                 tabfiltre.push(tableauRecette[i]);
+//             }
+//         })
+//     }
+
+//     console.log(tabfiltre.length);
+//     if (tabfiltre.length === 0) {
+//         return tableauRecette;
+//     } else {
+//         return tabfiltre;
+//     }
+// }
 function choixRecettes(recettes) {
 
-    let tabFiltreIngredients = [];
-    let tabfiltreAppareils = [];
-    let tabFiltreUstensiles = [];
+    let tabFiltre = [];
     const tableauRecette = [];
     let inputIngredient = document.querySelector("#texteIngredients");
     let inputAppareil = document.querySelector("#texteAppareils");
@@ -200,45 +248,40 @@ function choixRecettes(recettes) {
     recettes.recipes.forEach((recipe) => { tableauRecette.push(recipe) });
 
     inputIngredient.addEventListener('input', function () {
-
         tableauRecette.filter(function (recette) {
             recette.ingredients.forEach((ingredient) => {
                 if (ingredient === inputIngredient.value) {
-                    tabFiltreIngredients.push(recette);
-                    console.log(ingredient);
-                    return tabFiltreIngredients;
+                    tabFiltre.push(recette);
+                    return tabFiltre;
                 }
             });
         });
     });
 
     inputAppareil.addEventListener('input', function () {
-
         tableauRecette.filter(function (recette) {
             for (let i = 0; i < tableauRecette.length; i++) {
                 txtValue = recette.appliance;
                 if (txtValue === inputAppareil.value) {
-                    tabfiltreAppareils.push(recette);
-                    return tabfiltreAppareils;
+                    tabFiltre.push(recette);
+                    return tabFiltre;
                 };
             }
         });
-        console.log(tabfiltreAppareils.length);
     });
 
     inputUtensil.addEventListener('input', function () {
-
         tableauRecette.filter(function (recette) {
             recette.ustensils.forEach((ustensil) => {
                 if (ustensil === inputUtensil.value) {
-                    tabFiltreUstensiles.push(recette);
-                    return tabFiltreUstensiles;
+                    tabFiltre.push(recette);
+                    return tabFiltre;
                 };
             });
         });
     });
-
-    if (tabFiltreIngredients.length === 0 && tabFiltreUstensiles.length === 0 && tabfiltreAppareils.length === 0) {
+    console.log(tabFiltre.length);
+    if (tabFiltre.length === 0) {
         return tableauRecette;
     }
 }
@@ -247,7 +290,6 @@ function displayData(tableauDeRecettes) {
 
     const recettesSection = document.querySelector(".recettes-section");
     const divNbRecettes = document.querySelector(".nbRecettes");
-    let nbRecettes = 0;
 
     console.log(tableauDeRecettes.length);
 
@@ -255,10 +297,9 @@ function displayData(tableauDeRecettes) {
         const recetteModel = recettesTemplate(tableauDeRecettes[i]);
         const recetteCardDOM = recetteModel.getRecetteCardDOM();
         recettesSection.appendChild(recetteCardDOM);
-        nbRecettes++;
     }
 
-    divNbRecettes.textContent = nbRecettes + " recettes";
+    divNbRecettes.textContent = tableauDeRecettes.length + " recettes";
 }
 
 async function init() {
