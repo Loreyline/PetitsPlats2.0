@@ -7,7 +7,6 @@ async function getRecettes() {
     return recette;
 }
 
-
 function displayListes(recettes) {
     const divListIngredients = document.querySelector("#liteIngredients");
     const divListAppareils = document.querySelector("#listeAppareils");
@@ -186,57 +185,7 @@ function displayListes(recettes) {
         }
     });
 }
-// function entreeIngredient() {
-//     let inputIngredient = document.querySelector("#texteIngredients");
-//     inputIngredient.addEventListener('input', function () {
-//         return inputIngredient.value;
-//     });
-// }
 
-// function entreeAppareil() {
-//     let inputAppareil = document.querySelector("#texteAppareils");
-//     inputAppareil.addEventListener('input', function () {
-//         return inputAppareil.value;
-//     });
-// }
-
-// function entreeUstensil() {
-//     let inputUtensil = document.querySelector("#texteUstensile");
-//     inputUtensil.addEventListener('input', function () {
-//         return inputUtensil.value;
-//     });
-// }
-
-// function choixRecettes(recettes, ingredient, appareil, ustensil) {
-
-//     let tabfiltre = [];
-//     const tableauRecette = [];
-//     recettes.recipes.forEach((recipe) => { tableauRecette.push(recipe) });
-
-//     for (let i = 0; i < tableauRecette.length; i++) {
-//         tableauRecette[i].ingredients.forEach((element) => {
-//             if (ingredient === element) {
-//                 tabfiltre.push(tableauRecette[i]);
-//             }
-//         });
-//         if (appareil === tableauRecette[i].appliance) {
-//             console.log(appareil);
-//             tabfiltre.push(tableauRecette[i]);
-//         }
-//         tableauRecette[i].ustensils.forEach((element) => {
-//             if (ustensil === element) {
-//                 tabfiltre.push(tableauRecette[i]);
-//             }
-//         })
-//     }
-
-//     console.log(tabfiltre.length);
-//     if (tabfiltre.length === 0) {
-//         return tableauRecette;
-//     } else {
-//         return tabfiltre;
-//     }
-// }
 function choixRecettes(recettes) {
 
     let tabFiltre = [];
@@ -249,10 +198,10 @@ function choixRecettes(recettes) {
 
     inputIngredient.addEventListener('input', function () {
         tableauRecette.filter(function (recette) {
-            recette.ingredients.forEach((ingredient) => {
-                if (ingredient === inputIngredient.value) {
+            recette.ingredients.forEach((element) => {
+                if (element.ingredient === inputIngredient.value) {
                     tabFiltre.push(recette);
-                    return tabFiltre;
+                    displayData(tabFiltre);
                 }
             });
         });
@@ -260,13 +209,11 @@ function choixRecettes(recettes) {
 
     inputAppareil.addEventListener('input', function () {
         tableauRecette.filter(function (recette) {
-            for (let i = 0; i < tableauRecette.length; i++) {
-                txtValue = recette.appliance;
-                if (txtValue === inputAppareil.value) {
-                    tabFiltre.push(recette);
-                    return tabFiltre;
-                };
-            }
+            txtValue = recette.appliance;
+            if (txtValue === inputAppareil.value) {
+                tabFiltre.push(recette);
+                displayData(tabFiltre);
+            }; é
         });
     });
 
@@ -275,12 +222,12 @@ function choixRecettes(recettes) {
             recette.ustensils.forEach((ustensil) => {
                 if (ustensil === inputUtensil.value) {
                     tabFiltre.push(recette);
-                    return tabFiltre;
+                    displayData(tabFiltre);
                 };
             });
         });
     });
-    console.log(tabFiltre.length);
+
     if (tabFiltre.length === 0) {
         return tableauRecette;
     }
@@ -290,8 +237,7 @@ function displayData(tableauDeRecettes) {
 
     const recettesSection = document.querySelector(".recettes-section");
     const divNbRecettes = document.querySelector(".nbRecettes");
-
-    console.log(tableauDeRecettes.length);
+    recettesSection.innerHTML = "";
 
     for (let i = 0; i < tableauDeRecettes.length; i++) {
         const recetteModel = recettesTemplate(tableauDeRecettes[i]);
