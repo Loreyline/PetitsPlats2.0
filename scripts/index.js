@@ -412,26 +412,25 @@ function choixRecettes(recettes) {
     //     });
     // });
 
+    inputIngredient.addEventListener('input', function () {
+        tabFiltre = [];
+        tableauRecette.filter(function (recette) {
+            recette.ingredients.forEach((element) => {
+                if (element.ingredient.toUpperCase() === inputIngredient.value.toUpperCase()) {
+                    tabFiltre.push(recette);
+                    displayData(tabFiltre);
+                }
+            });
+        });
+    })
 
     inputAppareil.addEventListener('input', function () {
         tabFiltre = [];
-        tabCombine = [];
         tableauRecette.filter(function (recette) {
-            if (recette.appliance.toUpperCase() === inputAppareil.value.toUpperCase() && inputIngredient.value === "" && inputUtensil.value === "") {
+            if (recette.appliance.toUpperCase() === inputAppareil.value.toUpperCase()) {
                 tabFiltre.push(recette);
                 displayData(tabFiltre);
-            } else if (inputUtensil.value !== "") {
-                inputUtensil.addEventListener('input', function () {
-                    tabFiltre.filter(function (recette) {
-                        recette.ustensils.forEach((ustensil => {
-                            if (ustensil.toUpperCase() === inputUtensil.toUpperCase()) {
-                                tabfinale.push(recette);
-                                displayData(tabCombine);
-                            }
-                        }))
-                    })
-                })
-            }
+            };
         });
     });
 
@@ -439,7 +438,7 @@ function choixRecettes(recettes) {
         tabFiltre = [];
         tableauRecette.filter(function (recette) {
             recette.ustensils.forEach((ustensil) => {
-                if (ustensil.toUpperCase() === inputUtensil.value.toUpperCase() && inputIngredient.value === "" && inputAppareil.value === "") {
+                if (ustensil.toUpperCase() === inputUtensil.value.toUpperCase()) {
                     tabFiltre.push(recette);
                     displayData(tabFiltre);
                 };
