@@ -22,7 +22,7 @@
             </div>    
             <h1>chercher parmis plus de 1500 recettes du quotidien, simples et délicieuses</h1>
             <div class="recherche">
-                <form id="recherche">
+                <form id="rechercher">
                     <input type="text" placeholder="Rechercher une recette, un ingrédient, ..." name="recherche" id="recherche">
                     <button type="reset" class="reset" name="resetRecherche" id="resetRecherche">X</button>
                     <button type="submit" class="lancerRecherche" name="submitRecherche" id="submitRecherche">
@@ -34,51 +34,75 @@
         <main>
             <div class="selection">
                 <div class="selectCards">
-                    <div class="select">
-                        <div class="recherchePar">
-                            <p>Ingrédients</p>
-                            <button class="buttonListDown" id="rechercheIngredient"><i class="fa-solid fa-chevron-down"></i></button>
-                            <button class="buttonListUp" id="closeIngredient"><i class="fa-solid fa-chevron-up"></i></button>               
-                            <form class="formSelect" id="formIngredient">
-                                <input type="text" name="texteIngredients" id="texteIngredients">
-                                <button type="reset" class="reset" id="resetIngredient">X</button>
-                                <button type="submit" id="submitIngredient">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </form>                
-                            <div class="liste" id="liteIngredients"></div>
+                    <div class="group">
+                        <div class="select">
+                            <div class="recherchePar">
+                                <div class="titreRecherche">
+                                <p>Ingrédients</p>
+                                <button class="buttonListDown" id="rechercheIngredient"><i class="fa-solid fa-chevron-down"></i></button>
+                                <button class="buttonListUp" id="closeIngredient"><i class="fa-solid fa-chevron-up"></i></button>               
+                                </div>
+                                <form class="formSelect" id="formIngredient">
+                                    <input type="text" name="texteIngredients" id="texteIngredients">
+                                    <button type="reset" class="reset" id="resetIngredient">X</button>
+                                    <button type="submit" id="submitIngredient">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </form>                
+                                <div class="liste" id="liteIngredients"></div>
+                            </div>
+                        </div>
+                        <div class="choix" id="choixIngredient">
+                            <p class="textChoix" id="textChoixIngredient"></p>
+                            <button type="reset" class="reset" id="resetChoixIngredient">x</button>
                         </div>
                     </div>
-                    <div class="select">
-                        <div class="recherchePar">
-                            <p>Appareils</p>
-                            <button class="buttonListDown" id="rechercheAppareil"><i class="fa-solid fa-chevron-down"></i></button>
-                            <button class="buttonListUp" id="closeAppareil"><i class="fa-solid fa-chevron-up"></i></button>  
-                            <form class="formSelect" id="formAppareil">
-                                <input type="text" name="texteAppareils" id="texteAppareils">
-                                <button type="reset" class="reset" id="resetAppareil">X</button>
-                                <button type="submit" id="submitAppareil">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </form>                
-                            <div class="liste" id="listeAppareils"></div>
+                    <div class="group">
+                        <div class="select">
+                            <div class="recherchePar">
+                                <div class="titreRecherche">
+                                <p>Appareils</p>
+                                <button class="buttonListDown" id="rechercheAppareil"><i class="fa-solid fa-chevron-down"></i></button>
+                                <button class="buttonListUp" id="closeAppareil"><i class="fa-solid fa-chevron-up"></i></button>  
+                                </div>
+                                <form class="formSelect" id="formAppareil">
+                                    <input type="text" name="texteAppareils" id="texteAppareils">
+                                    <button type="reset" class="reset" id="resetAppareil">X</button>
+                                    <button type="submit" id="submitAppareil">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </form>                
+                                <div class="liste" id="listeAppareils"></div>
+                            </div> 
+                        </div>
+                        <div class="choix" id="choixAppareil">
+                            <p class="textChoix" id="textChoixAppareil"></p>
+                            <button type="reset" class="reset" id="resetChoixApareil">x</button>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="select">            
+                            <div class="recherchePar">
+                                <div class="titreRecherche">
+                                <p>Ustensiles</p>
+                                <button class="buttonListDown" id="rechercheUstensile"><i class="fa-solid fa-chevron-down"></i></button>
+                                <button class="buttonListUp" id="closeUstensile"><i class="fa-solid fa-chevron-up"></i></button>
+                                </div>
+                                <form class="formSelect" id="formUstensile">
+                                    <input type="text" name="texteUstensile" id="texteUstensile">
+                                    <button type="reset" class="reset" id="resetUstensile">X</button>
+                                    <button type="submit" id="submitUstensile">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </form>                
+                                <div class="liste" id="listeUstensiles"></div>
+                            </div>
+                        </div>   
+                        <div class="choix" id="choixUstensil">
+                            <p class="textChoix" id="textChoixUstensil"></p> 
+                            <button type="reset" class="reset" id="resetChoixUstensil">x</button>
                         </div> 
-                    </div>
-                    <div class="select">            
-                        <div class="recherchePar">
-                            <p>Ustensiles</p>
-                            <button class="buttonListDown" id="rechercheUstensile"><i class="fa-solid fa-chevron-down"></i></button>
-                            <button class="buttonListUp" id="closeUstensile"><i class="fa-solid fa-chevron-up"></i></button>
-                            <form class="formSelect" id="formUstensile">
-                                <input type="text" name="texteUstensile" id="texteUstensile">
-                                <button type="reset" class="reset" id="resetUstensile">X</button>
-                                <button type="submit" id="submitUstensile">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </form>                
-                            <div class="liste" id="listeUstensiles"></div>
-                        </div>
-                    </div>
+                    </div>                   
                 </div>
                 <div class="nbRecettes">
                     <span id="nombreRecettes"></span>

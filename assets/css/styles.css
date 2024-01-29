@@ -89,23 +89,34 @@ main {
     width: 65%;
 }
 
-.select {
+.group {
     display: flex;
     flex-direction: column;
-    margin-right: 10%;
+    width: 30%;
+}
+
+.select {
     background-color: white;
     border-radius: 10px;
     padding: 1%;
-    width: 25%;
+    margin-right: 10%;
+}
+
+.titreRecherche {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .recherchePar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     justify-content: space-between;
     border-radius: 10px;
-    flex-wrap: wrap;
+
 }
 
 .buttonListDown,
@@ -123,6 +134,8 @@ main {
     display: none;
     height: 3rem;
     margin: auto;
+    width: 95%;
+    justify-content: space-between;
 }
 
 .formSelect input,
@@ -231,4 +244,56 @@ section {
 
 .liste {
     display: none;
+    width: 100%;
+    margin: 0;
+    height: 15rem;
+}
+
+ul {
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+ul::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    height: 1rem;
+    width: 100%;
+    align-items: center;
+    padding: 5%;
+}
+
+a:hover {
+    background-color: #FFD15A;
+}
+
+.choix {
+    display: none;
+    width: 70%;
+    height: 3rem;
+    background-color: #FFD15A;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    margin-top: 1rem;
+}
+
+.choix .reset {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border-radius: 50px;
+    color: #FFD15A;
 }
