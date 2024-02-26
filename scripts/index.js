@@ -31,7 +31,7 @@ function tagIngredient(recettes) {
         recettes.recipes[i].ingredients.forEach((ingredient) => {
             tableauIngredients.push(ingredient.ingredient);
         });
-    }
+    };
     //élimination des doublons
     let newTabIngredients = [...new Set(tableauIngredients)];
 
@@ -71,7 +71,7 @@ function tagIngredient(recettes) {
         });
 
         ulIngredients.appendChild(aIngredient);
-    }
+    };
 
     divListIngredients.appendChild(ulIngredients);
 
@@ -136,7 +136,7 @@ function tagAppareil(recettes) {
     //pousser les éléments dans les tableaux
     for (let i = 0; i < tableauRecette.length; i++) {
         tableauAppareils.push(recettes.recipes[i].appliance);
-    }
+    };
     //élimination des doublons
     let newTabAppareils = [...new Set(tableauAppareils)];
     //affichage des tags
@@ -174,7 +174,7 @@ function tagAppareil(recettes) {
         });
 
         ulAppareils.appendChild(aAppareil);
-    }
+    };
 
     divListAppareils.appendChild(ulAppareils);
 
@@ -241,7 +241,7 @@ function tagUstensil(recettes) {
         recettes.recipes[i].ustensils.forEach((ustensil) => {
             tableauUstensiles.push(ustensil);
         });
-    }
+    };
 
     //élimination des doublons
     let newTabUstensiles = [...new Set(tableauUstensiles)];
@@ -251,7 +251,7 @@ function tagUstensil(recettes) {
         const aUstensil = document.createElement("a");
         const liUstensile = document.createElement("li");
         const aDivChoix = document.querySelector("#choixUstensil");
-        const aResetChoixUstensil = document.querySelector("#formChoixUstensile");
+        const aResetChoixUstensil = document.querySelector("#resetChoixUstensil");
         const aTextUstensil = document.querySelector("#textChoixUstensil");
         aUstensil.appendChild(liUstensile);
         liUstensile.textContent = newTabUstensiles[i];
@@ -282,10 +282,8 @@ function tagUstensil(recettes) {
             displayData(tableauRecette);
         })
         ulUstensiles.appendChild(aUstensil);
-    }
+    };
     divListUstensiles.appendChild(ulUstensiles);
-
-
 
     //mise en forme du tag ustesil
     rechercheUstensil.addEventListener('click', function () {
@@ -341,46 +339,78 @@ function choixRecettes(recettes) {
 
     recettes.recipes.forEach((recipe) => { tableauRecette.push(recipe) });
 
+    inputRecherche.addEventListener('input', function (e) {
+        e.preventDefault();
+        tabFiltre = [];
+        for (let i = 0; i < tableauRecette.length; i++) {
+            //recherche dans le titre de la recette
+            if (tableauRecette[i].name.toUpperCase().indexOf(inputRecherche.value.toUpperCase()) > -1) {
+                tabFiltre.push(tableauRecette[i]);
+            }
 
+            //recherche dans les appareils
+            if (tableauRecette[i].appliance.toUpperCase().indexOf(inputRecherche.value.toUpperCase()) > -1) {
+                tabFiltre.push(tableauRecette[i]);
+            }
+
+            //recherche dans les ingrédients
+            tableauRecette[i].ingredients.forEach((element) => {
+                if (element.ingredient.toUpperCase().indexOf(inputRecherche.value.toUpperCase()) > -1) {
+                    tabFiltre.push(tableauRecette[i]);
+                }
+            });
+
+            //recherche dans les ustensiles
+            tableauRecette[i].ustensils.forEach((ustensil) => {
+                if (ustensil.toUpperCase().indexOf(inputRecherche.value.toUpperCase()) > -1) {
+                    tabFiltre.push(tableauRecette[i]);
+                };
+            });
+
+            //élimination des doublons dans les recettes
+            let newtabFiltre = [...new Set(tabFiltre)];
+            displayData(newtabFiltre);
+        }
+    });
 
     inputIngredient.addEventListener('input', function () {
         tabFiltre = [];
-        tableauRecette.filter(function (recette) {
-            recette.ingredients.forEach((element) => {
-                if (element.ingredient.toUpperCase() === inputIngredient.value.toUpperCase()) {
-                    tabFiltre.push(recette);
+        for (let i = 0; i < tableauRecette.length; i++) {
+            tableauRecette[i].ingredients.forEach((element) => {
+                if (element.ingredient.toUpperCase().indexOf(inputIngredient.value.toUpperCase()) > -1) {
+                    tabFiltre.push(tableauRecette[i]);
                     displayData(tabFiltre);
                 }
             });
-        });
-    })
+        }
+    });
 
     inputAppareil.addEventListener('input', function () {
         tabFiltre = [];
-        tableauRecette.filter(function (recette) {
-            if (recette.appliance.toUpperCase() === inputAppareil.value.toUpperCase()) {
-                tabFiltre.push(recette);
+        for (let i = 0; i < tableauRecette.length; i++) {
+            if (tableauRecette[i].appliance.toUpperCase().indexOf(inputAppareil.value.toUpperCase()) > -1) {
+                tabFiltre.push(tableauRecette[i]);
                 displayData(tabFiltre);
             };
-        });
+        }
     });
 
     inputUtensil.addEventListener('input', function () {
         tabFiltre = [];
-        tableauRecette.filter(function (recette) {
-            recette.ustensils.forEach((ustensil) => {
-                if (ustensil.toUpperCase() === inputUtensil.value.toUpperCase()) {
-                    tabFiltre.push(recette);
+        for (let i = 0; i < tableauRecette.length; i++) {
+            tableauRecette[i].ustensils.forEach((ustensil) => {
+                if (ustensil.toUpperCase().indexOf(inputUtensil.value.toUpperCase()) > -1) {
+                    tabFiltre.push(tableauRecette[i]);
                     displayData(tabFiltre);
                 };
             });
-        });
+        }
     });
 
 
     if (tabFiltre.length === 0) {
         return tableauRecette;
-    }
+    };
 }
 
 function displayData(tableauDeRecettes) {
@@ -393,7 +423,7 @@ function displayData(tableauDeRecettes) {
         const recetteModel = recettesTemplate(tableauDeRecettes[i]);
         const recetteCardDOM = recetteModel.getRecetteCardDOM();
         recettesSection.appendChild(recetteCardDOM);
-    }
+    };
 
     divNbRecettes.textContent = tableauDeRecettes.length + " recettes";
 }
