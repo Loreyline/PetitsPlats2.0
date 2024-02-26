@@ -325,7 +325,6 @@ function tagUstensil(recettes) {
     });
 }
 
-
 function choixRecettes(recettes) {
 
     let tabFiltre = [];
@@ -335,7 +334,6 @@ function choixRecettes(recettes) {
     let inputUtensil = document.querySelector("#texteUstensile");
     let inputRecherche = document.querySelector("#recherche");
     //const validRecherche = document.querySelector("#submitRecherche");
-
 
     recettes.recipes.forEach((recipe) => { tableauRecette.push(recipe) });
 
@@ -406,7 +404,6 @@ function choixRecettes(recettes) {
             });
         }
     });
-
 
     if (tabFiltre.length === 0) {
         return tableauRecette;
